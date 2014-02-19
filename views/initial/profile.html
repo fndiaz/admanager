@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+{{=form.custom.begin}}
+
+<div>
+<label>Nome</label>
+ {{=form.custom.widget.first_name}}
+</div>
+<br>
+
+<div>
+<label>Sobrenome</label>
+ {{=form.custom.widget.last_name}}
+</div>
+<br>
+
+<div>
+<label>E-mail</label>
+ {{=form.custom.widget.email}}
+</div>
+
+<fieldset class="submit"><legend></legend>
+    <button type="submit" class="btn btn-primary">Editar</button>
+</fieldset>
+ 
+{{=form.custom.end}}
+
+{{end}}

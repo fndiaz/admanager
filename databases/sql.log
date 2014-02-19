@@ -1,0 +1,183 @@
+timestamp: 2013-11-14T10:05:59.253901
+CREATE TABLE auth_user(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512)
+);
+success!
+timestamp: 2013-11-14T10:05:59.429970
+CREATE TABLE auth_group(
+    id SERIAL PRIMARY KEY,
+    role VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-11-14T10:05:59.577690
+CREATE TABLE auth_membership(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-11-14T10:05:59.680410
+CREATE TABLE auth_permission(
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2013-11-14T10:05:59.829211
+CREATE TABLE auth_event(
+    id SERIAL PRIMARY KEY,
+    time_stamp TIMESTAMP,
+    client_ip VARCHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-11-14T10:05:59.976696
+CREATE TABLE auth_cas(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2013-11-19T14:50:43.743036
+CREATE TABLE post(
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(128),
+    conteudo TEXT,
+    criado DATE
+);
+success!
+timestamp: 2014-01-22T15:12:05.503072
+CREATE TABLE auth_user(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512)
+);
+success!
+timestamp: 2014-01-22T15:12:05.649938
+CREATE TABLE auth_group(
+    id SERIAL PRIMARY KEY,
+    role VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-01-22T15:12:05.866720
+CREATE TABLE auth_membership(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2014-01-22T15:12:06.067026
+CREATE TABLE auth_permission(
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2014-01-22T15:12:06.214816
+CREATE TABLE auth_event(
+    id SERIAL PRIMARY KEY,
+    time_stamp TIMESTAMP,
+    client_ip VARCHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-01-22T15:12:06.355575
+CREATE TABLE auth_cas(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2014-01-22T15:12:06.516308
+CREATE TABLE post(
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(128),
+    conteudo TEXT,
+    criado DATE
+);
+success!
+timestamp: 2014-02-11T09:47:22.900493
+CREATE TABLE f_menu(
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(512),
+    icone VARCHAR(512),
+    funcao VARCHAR(512),
+    submenu CHAR(1)
+);
+success!
+timestamp: 2014-02-11T09:47:23.319736
+CREATE TABLE f_submenu(
+    id SERIAL PRIMARY KEY,
+    menu_ref INTEGER REFERENCES f_menu (id) ON DELETE CASCADE,
+    nome VARCHAR(512),
+    icone VARCHAR(512),
+    funcao VARCHAR(512)
+);
+success!
+timestamp: 2014-02-13T08:53:15.590831
+CREATE TABLE f_permissao_menu(
+    id SERIAL PRIMARY KEY,
+    menu CHAR(1),
+    submenu CHAR(1)
+);
+success!
+timestamp: 2014-02-13T09:03:27.135150
+ALTER TABLE f_permissao_menu ADD id_user INTEGER REFERENCES auth_user (id) ON DELETE CASCADE;
+timestamp: 2014-02-13T12:21:08.593242
+ALTER TABLE f_permissao_menu ADD id_user__tmp TEXT;
+UPDATE f_permissao_menu SET id_user__tmp=id_user;
+ALTER TABLE f_permissao_menu DROP COLUMN id_user;
+ALTER TABLE f_permissao_menu ADD id_user TEXT;
+UPDATE f_permissao_menu SET id_user=id_user__tmp;
+ALTER TABLE f_permissao_menu DROP COLUMN id_user__tmp;
+timestamp: 2014-02-13T12:27:36.142917
+CREATE TABLE f_permissao_menu(
+    id SERIAL PRIMARY KEY,
+    id_user VARCHAR(512),
+    menu CHAR(1),
+    submenu CHAR(1)
+);
+success!
+timestamp: 2014-02-14T13:59:57.073175
+CREATE TABLE f_permissao_menu2(
+    id SERIAL PRIMARY KEY,
+    id_user INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    id_menu INTEGER REFERENCES f_menu (id) ON DELETE CASCADE,
+    id_submenu INTEGER REFERENCES f_submenu (id) ON DELETE CASCADE,
+    permissao CHAR(1)
+);
+success!
+timestamp: 2014-02-19T16:32:33.720777
+ALTER TABLE auth_user ADD bio VARCHAR(512);
+timestamp: 2014-02-19T16:32:56.465639
+ALTER TABLE auth_user ADD ramal VARCHAR(512);
+timestamp: 2014-02-19T16:32:56.469443
+ALTER TABLE auth_user DROP COLUMN bio;

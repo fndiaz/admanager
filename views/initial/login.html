@@ -1,0 +1,83 @@
+{{extend 'layout-login.html'}}
+
+{{block center}}
+{{=form.custom.begin}}
+
+<div>
+<label>E-mail</label>
+ {{=form.custom.widget.email}}
+ <span class="input-group-addon"><i class="icon-user"></i></span>
+</div>
+
+<div>
+<label>Senha</label>
+ {{=form.custom.widget.password}}
+ <span class="input-group-addon"><i class="icon-key"></i></span>
+</div>
+
+<fieldset class="submit"><legend></legend>
+    <button type="submit" class="btn btn-primary">Login</button>
+</fieldset>
+ 
+{{=form.custom.end}}
+
+{{end}}
+
+{{block login}}
+			
+				<div class="login-box">
+					
+					<div class="header">
+						Login admanager
+					</div>
+					
+					<div class="text-with-hr">
+						<span>com e-mail e senha</span>
+					</div>
+					
+						{{=form.custom.begin}}
+						<fieldset class="col-sm-12">
+							<div class="form-group">
+							  	<div class="controls row">	
+									<div class="input-group col-sm-12">	
+										{{=form.custom.widget.email}}
+										<span class="input-group-addon"><i class="icon-envelope-alt"></i></span>
+									</div>	
+							  	</div>
+							</div>
+							
+							<div class="form-group">
+							  	<div class="controls row">
+									<div class="input-group col-sm-12">	
+										{{=form.custom.widget.password}}
+										<span class="input-group-addon"><i class="icon-key"></i></span>
+									</div>	
+							  	</div>
+							</div>
+
+							<!--<div class="confirm">
+								<input type="checkbox" name="remember"/>
+								<label for="remember">Remember me</label>
+							</div>-->	
+
+							<div class="row">
+							
+								
+							<button type="submit" class="btn btn-lg btn-primary col-xs-12">Login</button>
+							
+							</div>
+							
+								
+						</fieldset>	
+						{{=form.custom.end}}
+					
+					
+					<a class="pull-left" href="{{=URL(a='admanager', c='initial', f='request_reset_password')}}">Esqueci minha senha?</a>
+					<!--<a class="pull-right" href="page-register.html">Sign Up!</a>-->
+					
+					<div class="clearfix"></div>				
+						
+				</div>
+
+
+{{end}}

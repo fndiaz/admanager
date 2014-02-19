@@ -1,0 +1,78 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<br><br>
+
+
+<div style="margin-left:150px; margin-right:150px">
+<form action="insert_permissao_menu" method="POST">
+<input type="hidden" name="id_usuario" value={{=id_usuario}}>
+{{
+    menu    =   db(db.f_menu).select(orderby=db.f_menu.ordem)
+    for dado in menu:
+    if dado.submenu == False:
+    print dado
+    print id_usuario
+    if auth.has_membership(dado.nome, id_usuario):
+        check_menup = "checked"
+    else:
+        check_menup = ""
+    pass
+}}
+<table style="clear: both" class="table table-bordered table-striped" id="user">
+<tbody> 
+<tr>         
+<td width="40%", style="border:1px solid #ADC2CC"><b>{{=dado.nome}}</b></td>
+<td width="60%", style="border:1px solid #ADC2CC">
+<input class="form-control" id="{{=dado.nome}}" name="{{=dado.nome}}" type="checkbox" value="on" {{=check_menup}}>
+</td>
+</tr>
+</tbody>
+</table><br>
+{{pass
+
+if dado.submenu == True:
+if auth.has_membership(dado.nome, id_usuario):
+    check_menup = "checked"
+else:
+    check_menup = ""
+pass}}
+<table style="clear: both" class="table table-bordered table-striped" id="user">
+<tbody> 
+<tr>         
+<td width="40%", style="border:1px solid #ADC2CC"><b>{{=dado.nome}}</b></td>
+<td width="60%", style="border:1px solid #ADC2CC">
+<input class="form-control" id="{{=dado.nome}}" name="{{=dado.nome}}" type="checkbox" value="on" {{=check_menup}}>
+</td>
+</tr>
+{{pass
+
+query = (dado.id == db.f_submenu.menu_ref)
+submenu = db(query).select(orderby=db.f_submenu.ordem)
+for sub in submenu:
+if auth.has_membership(sub.nome, id_usuario):
+    check_sub = "checked"
+else:
+    check_sub = ""
+pass}}
+<tr>         
+<td style="border:1px solid #ADC2CC">{{=sub.nome}}</td>
+<td style="border:1px solid #ADC2CC">
+<input class="form-control" id="{{=sub.nome}}" name="{{=sub.nome}}" type="checkbox" value="on" {{=check_sub}}>
+</td>
+</tr>  
+{{pass}} 
+</tbody>
+</table><br>
+{{pass}}
+
+<input value="Enviar" type="submit"  class="btn btn-primary">
+</form>
+</div>
+
+{{end}}
+
+
+
+
+

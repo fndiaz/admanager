@@ -1,0 +1,33 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<div class='row'>
+<div class="col-lg-4">
+{{=form.custom.begin}}
+<label>Menu:</label>
+<div>{{=form.custom.widget.nome}}</div>
+<br>
+
+<label>Icone:</label> 
+<div>{{=form.custom.widget.icone}}</div>
+<br>
+
+<label>Funcao:</label> 
+<div>{{=form.custom.widget.funcao}}</div>
+<br>
+
+<label>Ordem:</label> 
+<div>{{=form.custom.widget.ordem}}</div>
+<br>
+
+<label>Submenu:</label> 
+<div>{{=form.custom.widget.submenu}}</div>
+<br>
+
+<button type="submit" class="btn btn-primary">Enviar</button>
+{{=form.custom.end}}
+</div><!--col-lg-3-->
+</div><!--row-->
+<br>
+
+{{end}}

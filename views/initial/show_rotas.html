@@ -1,0 +1,68 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<br>
+<div class="direita">
+   <button type="button" class="btn btn-primary" onclick=location.href="{{=URL(a='admanager', c='initial', f='f_rotas_form')}}" >Adicionar</button>
+</div>
+<table class="tabela-forip">
+    <thead>
+        <tr>
+            <th>Rota</th>
+            <th>Tronco</th>
+            <th>Prioridade</th>
+            <th>Destino</th>
+            <th>Exclui antes</th>
+            <th>Adiciona antes</th>
+            <th>Adiciona depois</th>
+            <th>Empresa</th>
+            <th>Tarifação</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in rota:}}
+        <tr>
+            <td>{{=dado.f_rotas.rota}}</td>
+            <td>{{=dado.f_troncos.tronco}}</td>
+            <td>{{=dado.f_rotas.prioridade}}</td>
+            <td>{{=dado.f_destinos.tipo_chamada}}</td>
+            <td>{{=dado.f_rotas.exclui_antes}}</td>
+            <td>{{=dado.f_rotas.adiciona_antes}}</td>
+            <td>{{=dado.f_rotas.adiciona_depois}}</td>
+            <td>{{=dado.f_empresa.empresa}}</td>
+            <td>{{=dado.f_tarifacao.tarifacao}}</td>
+            <td>
+                <a href="{{=URL(a='admanager', c='initial', f='f_rotas_form')}}?id_rota={{=dado.f_rotas.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+
+                <a class="link" data-tabela="f_rotas" data-nome="{{=dado.f_rotas.rota}}" data-value="{{=dado.f_rotas.id}}" href="#">
+                    <i class=" icon-trash"></i></a>
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+<br><br>
+
+
+
+<script>
+var links = document.querySelectorAll('.link');
+for (x in links) {
+    links[x].onclick = function() { 
+    var data_attr = this.dataset;
+    //alert(data_attr.value);
+    var id   = data_attr.value;
+    var nome = data_attr.nome;
+    var tabela= data_attr.tabela;
+    decisao = confirm("Tem certeza que deseja remover o item "+nome);
+        if(decisao){
+            location.href="{{=URL(a='admanager', c='initial', f='delete')}}?id_tab="+id+"&tabela="+tabela+";"
+        }
+    return false;
+    }
+}
+</script>
+
+{{end}}

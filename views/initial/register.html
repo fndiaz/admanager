@@ -1,0 +1,37 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+{{=form.custom.begin}}
+
+<div>
+<label>Nome</label>
+ {{=form.custom.widget.first_name}}
+</div>
+
+<div>
+<label>Sobrenome</label>
+ {{=form.custom.widget.last_name}}
+</div>
+
+<div>
+<label>E-mail</label>
+ {{=form.custom.widget.email}}
+</div>
+
+<div>
+<label>Senha</label>
+ {{=form.custom.widget.password}}
+</div>
+
+<div>
+<label>Senha</label>
+ {{=form.custom.widget.password_two}}
+</div>
+
+<fieldset class="submit"><legend></legend>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</fieldset>
+ 
+{{=form.custom.end}}
+
+{{end}}

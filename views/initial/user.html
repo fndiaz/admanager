@@ -1,0 +1,29 @@
+{{extend 'layout-login.html'}}
+
+{{block center}}
+<h2><span style="color: black;">Faça o login!</span></h2>
+<p>Preencha o formulário:
+{{=user}}
+{{end}}
+
+{{block login}}
+
+				<div class="login-box">
+					
+					<div class="header">
+						Login admanager
+					</div>
+					
+					<div class="text-with-hr">
+						<span>Recuperar senha</span>
+					</div>
+					
+						{{=user}}
+					
+					
+					<!--<a class="pull-right" href="page-register.html">Sign Up!</a>-->
+					
+					<div class="clearfix"></div>				
+						
+				</div>
+{{end}}

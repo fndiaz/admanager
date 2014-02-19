@@ -1,0 +1,62 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<br>
+<div class="direita">
+    {{if editor == 1:}}
+   <button type="button" class="btn btn-primary" onclick=location.href="{{=URL(a='admanager', c='initial', f='f_submenu_form')}}" >Adicionar</button>
+   {{pass}}
+</div>
+<table class="tabela-forip">
+    <thead>
+        <tr>
+            <th>Submenu</th>
+            <th>Menu</th>
+            <th>Icone</th>
+            <th>Ordem</th>
+            <th>Função</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in var:}}
+        <tr>
+            <td>{{=dado.f_submenu.nome}}</td>
+            <td>{{=dado.f_menu.nome}}</td>
+            <td>{{=dado.f_submenu.icone}}</td>
+            <td>{{=dado.f_submenu.ordem}}</td>
+            <td>{{=dado.f_submenu.funcao}}</td>
+            <td>
+                {{if editor == 1:}}
+                <a href="{{=URL(a='admanager', c='initial', f='f_submenu_form')}}?id_submenu={{=dado.f_submenu.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+
+                <a class="link" data-tabela="f_submenu" data-nome="{{=dado.f_submenu.nome}}" data-value="{{=dado.f_submenu.id}}" href="#">
+                    <i class=" icon-trash"></i></a>
+                {{pass}}
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+<br><br>
+
+<script>
+var links = document.querySelectorAll('.link');
+for (x in links) {
+    links[x].onclick = function() { 
+    var data_attr = this.dataset;
+    //alert(data_attr.value);
+    var id   = data_attr.value;
+    var nome = data_attr.nome;
+    var tabela= data_attr.tabela;
+    decisao = confirm("Tem certeza que deseja remover o item "+nome);
+        if(decisao){
+            location.href="{{=URL(a='admanager', c='initial', f='delete')}}?id_tab="+id+"&tabela="+tabela+"&nome="+nome+"&tipo=submenu;"
+        }
+    return false;
+    }
+}
+</script>
+
+{{end}}

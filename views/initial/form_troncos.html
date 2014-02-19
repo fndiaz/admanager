@@ -1,0 +1,63 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<div class='row'>
+<div class="col-lg-7">
+{{=form.custom.begin}}
+<label>Tronco:</label>
+<div>{{=form.custom.widget.tronco}}</div>
+<br>
+
+<label>Dispositivo:</label> 
+<div>{{=form.custom.widget.dispositivo}}</div>
+<br>
+
+<label>Cham Simultaneas:</label> 
+<div>{{=form.custom.widget.chamadas_simultaneas}}</div>
+<br>
+
+<label>Max Minutos:</label> 
+<div>{{=form.custom.widget.qtde_max_minutos}}</div>
+<br>
+
+<label>Transbordo:</label> 
+<div>{{=form.custom.widget.transbordo}}</div>
+<br>
+
+<label>Habilitado:</label><br>
+<div>{{=form.custom.widget.habilitado}}</div>
+<br>
+
+<button type="submit" class="btn btn-primary">Enviar</button>
+</div><!--col-lg-7-->
+
+<div class="col-lg-3">
+<label>Ddd:</label> 
+<div>{{=form.custom.widget.ddd}}</div>
+<br>
+
+<label>Prefixo:</label> 
+<div>{{=form.custom.widget.prefixo}}</div>
+<br>
+
+<label>Chave:</label> 
+<div>{{=form.custom.widget.chave}}</div>
+<br>
+
+<label>Ciclo da conta:</label> 
+<div>{{=form.custom.widget.ciclo_conta}}</div>
+<br>
+
+<label>Csp:</label> 
+<div>{{=form.custom.widget.csp}}</div>
+<br>
+
+{{=form.custom.end}}
+</div><!--col-lg-3-->
+
+</div><!--row-->
+<br>
+
+
+
+{{end}}

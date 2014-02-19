@@ -1,0 +1,76 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<p>Tabela</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for post in posts:}}
+        <tr>
+            <td>{{=post.id}}</td>
+            <td>{{=post.titulo}}</td>
+            <td>{{=post.conteudo}}</td>
+            <td>{{=post.criado}}</td>
+            <td>
+                <button class="btn"><i class="icon-edit"></i></button>
+            </td>
+            <td>
+                <button class="btn"><i class="icon-trash"></i></button>
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+
+<!-- Paginacao -->
+<!--<p> total {{=registros}}</p>
+<p> pagina {{=end}}</p>-->
+<div class="pagination">
+    <ul class="pagination">
+        {{if end != paginate:}}<!--maior que 10 não escreve anterior-->
+        <li><a href={{=URL(vars={'page':int(request.vars.page)-1})}}>Anterior</a></li>
+        {{pass}}
+
+        {{for num in range((registros // paginate)+x):
+            num = num +1}}
+        {{if num == int(request.vars.page):}}
+        <li class="active"><a href={{=URL(vars={'page':num})}}>{{=num}}</a></li>
+        {{else:}}
+        <li><a href={{=URL(vars={'page':num})}}>{{=num}}</a></li>
+        {{pass}}
+        {{pass}}
+
+        {{if not end >= registros:}}<!--nao escreve proximo (ultima pagina)-->
+        <li class="active">
+        <li><a href={{=URL(vars={'page':int(request.vars.page)+1})}}>Próximo</a></li>
+        {{pass}}
+    </ul>
+</div>
+
+<!-- Paginacao -->
+<!--<p> total {{=registros}}</p>
+<p> pagina {{=end}}</p>-->
+
+<!--{{if end != 10:}}
+<a href={{=URL(vars={'page':int(request.vars.page)-1})}}>Previous</a>  |
+{{pass}}
+
+{{if end >= registros:}}
+Next
+{{else:}}
+<a href={{=URL(vars={'page':int(request.vars.page)+1})}}>Next</a>
+{{pass}}-->
+
+{{end}}
+
+
+

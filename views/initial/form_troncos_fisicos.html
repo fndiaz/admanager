@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<div class='row'>
+<div class="col-lg-4">
+{{=form.custom.begin}}
+<label>Tronco Físico:</label>
+<div>{{=form.custom.widget.id_tronco}}</div>
+<br>
+
+<label>Dispositivo:</label> 
+<div>{{=form.custom.widget.dispositivo}}</div>
+<br>
+
+<button type="submit" class="btn btn-primary">Enviar</button>
+{{=form.custom.end}}
+</div><!--col-lg-3-->
+</div><!--row-->
+<br>
+
+{{end}}
