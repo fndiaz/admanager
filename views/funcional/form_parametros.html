@@ -1,0 +1,126 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<div class='row'>
+<div class="col-lg-7">
+{{=form.custom.begin}}
+<label>Empresa:</label>
+<div>{{=form.custom.widget.empresa}}</div>
+<br>
+
+<label>Tempo chamada externa:</label> 
+<div>{{=form.custom.widget.tempo_chamada_externa}}</div>
+<br>
+
+<label>Tempo chamada interna:</label> 
+<div>{{=form.custom.widget.tempo_chamada_interna}}</div>
+<br>
+
+<label>Gravação geral:</label> 
+<div>{{=form.custom.widget.gravacao_geral}}</div>
+<br>
+
+<label>Endereço SMTP:</label> 
+<div>{{=form.custom.widget.endereco_smtp}}</div>
+<br>
+
+<label>Usuário SMTP:</label> 
+<div>{{=form.custom.widget.usuario_smtp}}</div>
+<br>
+
+<label>Senha SMTP:</label> 
+<div>{{=form.custom.widget.senha_smtp}}</div>
+<br>
+
+<label>Porta SMTP:</label> 
+<div>{{=form.custom.widget.porta_smtp}}</div>
+<br>
+
+<label>SSL SMTP:</label> 
+<div>{{=form.custom.widget.ssl_smtp}}</div>
+<br>
+
+<label>email administrador:</label> 
+<div>{{=form.custom.widget.email_admin}}</div>
+<br>
+
+<div style="margin-left:0px; margin-right:300px">
+<label>Faixa interna IP:</label> 
+<div>{{=form.custom.widget.faixa_ip_interna}}</div>
+</div>
+<br>
+
+<label>IP Externo:</label> 
+<div>{{=form.custom.widget.endereco_ip_externo}}</div>
+<br>
+
+<label>Host externo:</label> 
+<div>{{=form.custom.widget.endereco_host_externo}}</div>
+<br>
+
+<label>Tempo chamada transferência:</label> 
+<div>{{=form.custom.widget.tempo_chamada_transf}}</div>
+<br>
+
+<br>
+<button type="submit" class="btn btn-primary">Enviar</button>
+</div><!--col-lg-7-->
+
+<div class="col-lg-3">
+<label>Toque sipheader:</label> 
+<div>{{=form.custom.widget.toque_diff_sipheader}}</div>
+<br>
+
+<label>Toque diferenciado:</label> 
+<div>{{=form.custom.widget.toque_diferenciado}}</div>
+<br>
+
+<label>Spy senha:</label> 
+<div>{{=form.custom.widget.spy_senha}}</div>
+<br>
+
+<label>Spy blacklist:</label> 
+<div>{{=form.custom.widget.spy_ramal_proibe_monitora}}</div>
+<br>
+
+<label>Spy espião:</label> 
+<div>{{=form.custom.widget.spy_ramal_espiao}}</div>
+<br>
+
+<label>Tamanho PIN:</label> 
+<div>{{=form.custom.widget.tamanho_pin}}</div>
+<br>
+
+<label>Fuso horário:</label> 
+<div>{{=form.custom.widget.fuso_horario}}</div>
+<br>
+
+<label>Crédito dia:</label> 
+<div>{{=form.custom.widget.credito_dia}}</div>
+<br>
+
+<label>PIN temporário:</label> 
+<div>{{=form.custom.widget.pin_temporario}}</div>
+<br>
+
+<label>Permite ura antes horário:</label> 
+<div>{{=form.custom.widget.ura_antes_horario}}</div>
+<br>
+
+<label>Bloqueio chamada a cobrar:</label> 
+<div>{{=form.custom.widget.bloqueio_chamadacobrar}}</div>
+<br>
+
+<label>Rechamada:</label> 
+<div>{{=form.custom.widget.rechamada}}</div>
+<br>
+
+{{=form.custom.end}}
+</div><!--col-lg-3-->
+
+</div><!--row-->
+<br>
+
+
+
+{{end}}

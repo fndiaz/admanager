@@ -1,0 +1,83 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<br>
+<div class="direita">
+   <button type="button" class="btn btn-primary" onclick=location.href="{{=url}}" >Adicionar</button>
+</div>
+<table class="tabela-forip">
+    <thead>
+        <tr>
+            <th>Rota</th>
+            <th>Tronco</th>
+            <th>Prioridade</th>
+            <th>Destino</th>
+            <th>Exclui antes</th>
+            <th>Adiciona antes</th>
+            <th>Adiciona depois</th>
+            <th>Empresa</th>
+            <th>Tarifação</th>
+            <th>horario</th>
+            <th>csp</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in rota:}}
+        <tr>
+            <td>{{=dado.rota}}</td>
+            <td>{{=dado.id_tronco}}</td>
+            <td>{{=dado.prioridade}}</td>
+            <!--<td>{{=dado.id_destino}}</td>-->
+            <td>
+                {{for item in dado.id_destino:}}
+                {{=db(db.f_destinos.id == item).select(db.f_destinos.destino)[0].destino}}<br>
+                {{pass}}
+            </td>
+            <td>{{=dado.exclui_antes}}</td>
+            <td>{{=dado.adiciona_antes}}</td>
+            <td>{{=dado.adiciona_depois}}</td>
+            <td>
+                {{for item in dado.id_empresa:}}
+                {{=db(db.f_empresa.id == item).select(db.f_empresa.empresa)[0].empresa}}<br>
+                {{pass}}
+            </td>
+            <td>{{=dado.id_tarifacao}}</td>
+            <td>{{=dado.id_horario}}</td>
+            <td>{{=dado.add_csp}}</td>
+            <td>
+            {{if editor == True:}}
+                <a href="{{=url}}?id_rota={{=dado.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+
+                <a class="link" data-tabela="f_rotas" data-nome="{{=dado.rota}}" data-value="{{=dado.id}}" href="#">
+                    <i class=" icon-trash"></i></a>
+            {{pass}}
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+<br><br>
+
+
+
+<script>
+var links = document.querySelectorAll('.link');
+for (x in links) {
+    links[x].onclick = function() { 
+    var data_attr = this.dataset;
+    //alert(data_attr.value);
+    var id   = data_attr.value;
+    var nome = data_attr.nome;
+    var tabela= data_attr.tabela;
+    decisao = confirm("Tem certeza que deseja remover o item "+nome);
+        if(decisao){
+            location.href="{{=URL(a='admanager', c='initial', f='delete')}}?id_tab="+id+"&tabela="+tabela+";"
+        }
+    return false;
+    }
+}
+</script>
+
+{{end}}

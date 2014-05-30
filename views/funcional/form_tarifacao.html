@@ -1,0 +1,25 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<div class='row'>
+<div class="col-lg-4">
+{{=form.custom.begin}}
+<label>Tarifação:</label>
+<div>{{=form.custom.widget.tarifacao}}</div>
+<br>
+
+<label>Passo:</label> 
+<div>{{=form.custom.widget.passo}}</div>
+<br>
+
+<label>Valor:</label> 
+<div>{{=form.custom.widget.valor}}</div>
+<br>
+
+<button type="submit" class="btn btn-primary">Enviar</button>
+{{=form.custom.end}}
+</div><!--col-lg-3-->
+</div><!--row-->
+<br>
+
+{{end}}

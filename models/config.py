@@ -7,7 +7,7 @@ config = Storage(
         )
 
 #config.db.uri = "mysql://root:yma2578k@localhost/adm"
-config.db.uri = "postgres:pg8000://postgres:123456@127.0.0.1/forip_admanager"
+config.db.uri = "postgres:pg8000://postgres:123456@127.0.0.1/forip_manager_dev"
 #config.db.uri = "sqlite://hosts.sqlite"
 config.db.pool_size = 10
 config.db.check_reserved = ['all']
@@ -18,7 +18,7 @@ db = DAL(**config.db)
 
 # logging
 import logging
-logger = logging.getLogger("web2py.app.blog")
+logger = logging.getLogger("web2py.admanager")
 logger.setLevel(logging.DEBUG)
 
 #auth Rbac
@@ -29,7 +29,7 @@ auth = Auth(db, controller="initial", function="user")
 #settings
 auth.settings.remember_me_form = False
 auth.settings.formstyle = "divs"
-auth.settings.login_next = URL(a='admanager', c='initial', f='f_troncos')
+auth.settings.login_next = URL(a='admanager', c='funcional', f='f_troncos')
 auth.settings.request_reset_password_next = URL('initial', 'login')
 auth.settings.logout_next = URL('login?_next=')
 auth.settings.registration_requires_verification = False

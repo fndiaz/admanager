@@ -1,0 +1,15 @@
+[{
+	"nome": "Tronco",
+	"funcao": "f_troncos",
+	"icone": "icon-list-alt",
+	"ordem": "5",
+	"submenu": False
+},
+     {
+	"nome": "Empresa",
+	"funcao": "f_empresa",
+	"icone": "icon-list-alt",
+	"ordem": "4",
+	"submenu": False
+}]
+

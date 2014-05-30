@@ -181,3 +181,230 @@ timestamp: 2014-02-19T16:32:56.465639
 ALTER TABLE auth_user ADD ramal VARCHAR(512);
 timestamp: 2014-02-19T16:32:56.469443
 ALTER TABLE auth_user DROP COLUMN bio;
+timestamp: 2014-05-19T08:41:09.978761
+CREATE TABLE auth_user(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    ramal VARCHAR(512)
+);
+success!
+timestamp: 2014-05-19T08:41:10.700820
+CREATE TABLE auth_group(
+    id SERIAL PRIMARY KEY,
+    role VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-05-19T08:41:10.859095
+CREATE TABLE auth_membership(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2014-05-19T08:41:11.018697
+CREATE TABLE auth_permission(
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2014-05-19T08:41:11.158574
+CREATE TABLE auth_event(
+    id SERIAL PRIMARY KEY,
+    time_stamp TIMESTAMP,
+    client_ip VARCHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-05-19T08:41:11.331825
+CREATE TABLE auth_cas(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2014-05-19T08:41:11.512666
+CREATE TABLE f_permissao_menu(
+    id SERIAL PRIMARY KEY,
+    id_user VARCHAR(512),
+    menu CHAR(1),
+    submenu CHAR(1)
+);
+success!
+timestamp: 2014-05-19T08:41:11.639416
+CREATE TABLE f_permissao_menu2(
+    id SERIAL PRIMARY KEY,
+    id_user INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    id_menu INTEGER REFERENCES f_menu (id) ON DELETE CASCADE,
+    id_submenu INTEGER REFERENCES f_submenu (id) ON DELETE CASCADE,
+    permissao CHAR(1)
+);
+timestamp: 2014-05-19T08:42:55.783310
+CREATE TABLE f_menu(
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(512),
+    icone VARCHAR(512),
+    funcao VARCHAR(512),
+    ordem INTEGER,
+    submenu CHAR(1)
+);
+success!
+timestamp: 2014-05-19T08:42:55.954694
+CREATE TABLE f_submenu(
+    id SERIAL PRIMARY KEY,
+    menu_ref INTEGER REFERENCES f_menu (id) ON DELETE CASCADE,
+    nome VARCHAR(512),
+    icone VARCHAR(512),
+    ordem INTEGER,
+    funcao VARCHAR(512)
+);
+success!
+timestamp: 2014-05-19T08:42:56.098392
+CREATE TABLE f_permissao_menu2(
+    id SERIAL PRIMARY KEY,
+    id_user INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    id_menu INTEGER REFERENCES f_menu (id) ON DELETE CASCADE,
+    id_submenu INTEGER REFERENCES f_submenu (id) ON DELETE CASCADE,
+    permissao CHAR(1)
+);
+success!
+timestamp: 2014-05-19T09:56:44.591943
+CREATE TABLE auth_user(
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(128),
+    last_name VARCHAR(128),
+    email VARCHAR(512),
+    password VARCHAR(512),
+    registration_key VARCHAR(512),
+    reset_password_key VARCHAR(512),
+    registration_id VARCHAR(512),
+    ramal VARCHAR(512)
+);
+success!
+timestamp: 2014-05-19T09:56:44.743740
+CREATE TABLE auth_group(
+    id SERIAL PRIMARY KEY,
+    role VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-05-19T09:56:44.887007
+CREATE TABLE auth_membership(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2014-05-19T09:56:45.034895
+CREATE TABLE auth_permission(
+    id SERIAL PRIMARY KEY,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name VARCHAR(512),
+    table_name VARCHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2014-05-19T09:56:45.168805
+CREATE TABLE auth_event(
+    id SERIAL PRIMARY KEY,
+    time_stamp TIMESTAMP,
+    client_ip VARCHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin VARCHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-05-19T09:56:45.284277
+CREATE TABLE auth_cas(
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service VARCHAR(512),
+    ticket VARCHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2014-05-19T09:56:45.449644
+CREATE TABLE f_menu(
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(512),
+    icone VARCHAR(512),
+    funcao VARCHAR(512),
+    ordem INTEGER,
+    submenu CHAR(1)
+);
+success!
+timestamp: 2014-05-19T09:56:45.591188
+CREATE TABLE f_submenu(
+    id SERIAL PRIMARY KEY,
+    menu_ref INTEGER REFERENCES f_menu (id) ON DELETE CASCADE,
+    nome VARCHAR(512),
+    icone VARCHAR(512),
+    ordem INTEGER,
+    funcao VARCHAR(512)
+);
+success!
+timestamp: 2014-05-19T09:56:45.723272
+CREATE TABLE f_permissao_menu(
+    id SERIAL PRIMARY KEY,
+    id_user VARCHAR(512),
+    menu CHAR(1),
+    submenu CHAR(1)
+);
+success!
+timestamp: 2014-05-19T09:56:45.882290
+CREATE TABLE f_permissao_menu2(
+    id SERIAL PRIMARY KEY,
+    id_user INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    id_menu INTEGER REFERENCES f_menu (id) ON DELETE CASCADE,
+    id_submenu INTEGER REFERENCES f_submenu (id) ON DELETE CASCADE,
+    permissao CHAR(1)
+);
+success!
+timestamp: 2014-05-19T18:28:30.005311
+CREATE TABLE f_rotas(
+    id SERIAL PRIMARY KEY,
+    rota VARCHAR(32768),
+    id_tronco INTEGER REFERENCES f_troncos (id) ON DELETE CASCADE,
+    prioridade INTEGER,
+    id_destino TEXT,
+    exclui_antes INTEGER,
+    adiciona_antes VARCHAR(512),
+    adiciona_depois VARCHAR(512),
+    id_empresa TEXT,
+    id_tarifacao INTEGER REFERENCES f_tarifacao (id) ON DELETE CASCADE,
+    id_horario INTEGER REFERENCES f_horario (id) ON DELETE CASCADE,
+    add_csp CHAR(1)
+);
+timestamp: 2014-05-19T18:30:57.589486
+CREATE TABLE f_rotas(
+    id SERIAL PRIMARY KEY,
+    rota VARCHAR(32768),
+    id_tronco INTEGER REFERENCES f_troncos (id) ON DELETE CASCADE,
+    prioridade INTEGER,
+    id_destino TEXT,
+    exclui_antes INTEGER,
+    adiciona_antes VARCHAR(512),
+    adiciona_depois VARCHAR(512),
+    id_empresa TEXT,
+    id_tarifacao INTEGER REFERENCES f_tarifacao (id) ON DELETE CASCADE,
+    id_horario INTEGER REFERENCES f_horario (id) ON DELETE CASCADE,
+    add_csp CHAR(1)
+);
+success!
+timestamp: 2014-05-28T11:37:22.371028
+ALTER TABLE f_menu ADD controller VARCHAR(512);

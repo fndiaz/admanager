@@ -1,0 +1,64 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<div class='row'>
+<div class="col-lg-7">
+{{=form.custom.begin}}
+<label>Rota:</label>
+<div>{{=form.custom.widget.rota}}</div>
+<br>
+
+<label>Tronco:</label> 
+<div>{{=form.custom.widget.id_tronco}}</div>
+<br>
+
+<label>Prioridade:</label> 
+<div>{{=form.custom.widget.prioridade}}</div>
+<br>
+
+<label>Destino:</label> 
+<div>{{=form.custom.widget.id_destino}}</div>
+<br>
+
+<label>Tarifação:</label> 
+<div>{{=form.custom.widget.id_tarifacao}}</div>
+<br>
+
+<br>
+<button type="submit" class="btn btn-primary">Enviar</button>
+</div><!--col-lg-7-->
+
+<div class="col-lg-3">
+<label>Adiciona antes:</label> 
+<div>{{=form.custom.widget.adiciona_antes}}</div>
+<br>
+
+<label>Adiciona depois:</label> 
+<div>{{=form.custom.widget.adiciona_depois}}</div>
+<br>
+
+<label>Exclui antes:</label> 
+<div>{{=form.custom.widget.exclui_antes}}</div>
+<br>
+
+<label>Empresa:</label> 
+<div>{{=form.custom.widget.id_empresa}}</div>
+<br>
+
+<label>horario:</label> 
+<div>{{=form.custom.widget.id_horario}}</div>
+<br>
+
+<label>add_csp:</label> 
+<div>{{=form.custom.widget.add_csp}}</div>
+<br>
+
+{{=form.custom.end}}
+</div><!--col-lg-3-->
+
+</div><!--row-->
+<br>
+
+
+
+{{end}}

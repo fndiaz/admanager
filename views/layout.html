@@ -54,7 +54,7 @@
 			      <span class="icon-bar"></span>
 			</button>
 			<a id="main-menu-toggle" class="hidden-xs open"><i class="icon-reorder"></i></a>		
-			<a class="navbar-brand col-md-2 col-sm-1 col-xs-2" href="index-2.html"><span>Genius</span></a>
+			<a class="navbar-brand col-md-2 col-sm-1 col-xs-2" href="index-2.html"><span>ADManager</span></a>
 			<!--<div id="search" class="col-sm-5 col-xs-8 col-lg-3">
 				<select>
 					<option>everything</option>
@@ -360,12 +360,12 @@
 								for dado in menu:
 									#print dado
 									if dado.submenu == False:
-									if auth.has_membership(dado.nome):}}
-									<li><a href="{{=dado.funcao}}"><i class="{{=dado.icone}}"></i><span class="hidden-sm text"> {{=dado.nome}}</span></a></li>
+									if (auth.has_membership(dado.nome) or auth.has_membership('administrador')):}}
+									<li><a href="{{=URL(a='admanager', c=dado.controller, f=dado.funcao)}}"><i class="{{=dado.icone}}"></i><span class="hidden-sm text"> {{=dado.nome}}</span></a></li>
 									{{pass
 									pass
 									if dado.submenu == True:
-									if auth.has_membership(dado.nome):}}
+									if (auth.has_membership(dado.nome) or auth.has_membership('administrador')):}}
 									<li>
 									<a class="dropmenu" href="ui-sliders-progress.html#"><i class="icon-list-alt"></i><span class="hidden-sm text"> {{=dado.nome}}</span> <span class="chevron closed"></span></a>
 									{{pass
@@ -376,7 +376,7 @@
 									<ul>
 									{{for sub in submenu:
 										#print sub
-										if auth.has_membership(sub.nome):}}
+										if (auth.has_membership(sub.nome) or auth.has_membership('administrador')):}}
 										<li><a class="submenu" href="{{=sub.funcao}}"><i class="{{=sub.icone}}"></i><span class="hidden-sm text"> {{=sub.nome}}</span></a></li>
 									{{pass
 									pass}}
@@ -503,8 +503,8 @@
 	
 	<footer>
 		<p>
-			<span style="text-align:left;float:left">&copy; 2013 <a href="http://bootstrapmaster.com/" alt="Bootstrap Themes">BootstrapMaster.com</a></span>
-			<span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="http://bootstrapmaster.com/" alt="Bootstrap Admin Template">Genius</a></span>
+			<span style="text-align:left;float:left">&copy; 2014 <a href="http://forip.com.br/" alt="Bootstrap Themes">ForIP.com.br</a></span>
+			<span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="http://bootstrapmaster.com/" alt="Bootstrap Admin Template">ForIP</a></span>
 		</p>
 
 	</footer>

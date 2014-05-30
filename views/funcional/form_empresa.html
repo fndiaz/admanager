@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<div class='row'>
+<div class="col-lg-4">
+{{=form.custom.begin}}
+<label>Empresa:</label>
+<div>{{=form.custom.widget.empresa}}</div>
+<br>
+
+<!--<label>Faixa ramal:</label> 
+<div>{{=form.custom.widget.faixa_ramal}}</div>
+<br>-->
+
+<button type="submit" class="btn btn-primary">Enviar</button>
+{{=form.custom.end}}
+</div><!--col-lg-3-->
+</div><!--row-->
+<br>
+
+{{end}}

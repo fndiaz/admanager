@@ -1,0 +1,29 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<div class='row'>
+<div class="col-lg-4">
+{{=form.custom.begin}}
+<label>Tipo Chamada:</label>
+<div>{{=form.custom.widget.tipo_chamada}}</div>
+<br>
+
+<label>Expressão:</label> 
+<div>{{=form.custom.widget.expressao}}</div>
+<br>
+
+<label>Destino:</label> 
+<div>{{=form.custom.widget.destino}}</div>
+<br>
+
+<label>Tamanho:</label> 
+<div>{{=form.custom.widget.tamanho_max}}</div>
+<br>
+
+<button type="submit" class="btn btn-primary">Enviar</button>
+{{=form.custom.end}}
+</div><!--col-lg-3-->
+</div><!--row-->
+<br>
+
+{{end}}

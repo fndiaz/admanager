@@ -1,0 +1,82 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<br>
+<div class="direita">
+   <button type="button" class="btn btn-primary" onclick=location.href="{{=url}}" >Adicionar</button>
+</div>
+<table class="tabela-forip">
+    <thead>
+        <tr>
+            <th>Tronco</th>
+            <th>Origem</th>
+            <th>Destino</th>
+            <th>Linked</th>
+            <th>Horário</th>
+            <th>Status</th>
+            <th>Tarifação</th>
+            <th>Tempo</th>
+            <th>Empresa</th>
+            <th>Destino</th>
+            <th>Gravação</th>
+            <th>Atendido</th>
+            <th>Nome origem</th>
+            <th>Departamento</th>
+            <th>transbordo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in bilhetes:}}
+        <tr>
+            <td>{{=dado.f_troncos.tronco}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.origem}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.destino}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.linked_id}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.horario}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.status}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.tarifacao}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.tempo}}</td>
+            <td>{{=dado.f_empresa.empresa}}</td>
+            <td>{{=dado.f_destinos.tipo_chamada}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.gravacao}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.atendido}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.nome_origem}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.departamento}}</td>
+            <td>{{=dado.f_bilhetes_chamadas.transbordo}}</td>
+            <td>
+            {{if editor == True:}}
+                <a href="{{=url}}?id_rota={{=dado.f_bilhetes_chamadas.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+
+                <a class="link" data-tabela="f_rotas" data-nome="{{=dado.f_bilhetes_chamadas.id}}" data-value="{{=dado.f_bilhetes_chamadas.id}}" href="#">
+                    <i class=" icon-trash"></i></a>
+            {{pass}}
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+<br><br>
+
+
+
+<script>
+var links = document.querySelectorAll('.link');
+for (x in links) {
+    links[x].onclick = function() { 
+    var data_attr = this.dataset;
+    //alert(data_attr.value);
+    var id   = data_attr.value;
+    var nome = data_attr.nome;
+    var tabela= data_attr.tabela;
+    decisao = confirm("Tem certeza que deseja remover o item "+nome);
+        if(decisao){
+            location.href="{{=URL(a='admanager', c='initial', f='delete')}}?id_tab="+id+"&tabela="+tabela+";"
+        }
+    return false;
+    }
+}
+</script>
+
+{{end}}

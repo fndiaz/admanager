@@ -1,0 +1,68 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<br>
+<div class="direita">
+    {{if editor == 1:}}
+   <button type="button" class="btn btn-primary" onclick=location.href="{{=url}}" >Adicionar</button>
+   {{pass}}
+</div>
+<table class="tabela-forip">
+    <thead>
+        <tr>
+            <th>Tronco Físico</th>
+            <th>Dispositivo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in troncos_fisicos:}}
+        <tr>
+            <td>{{=dado.f_troncos.tronco}}</td>
+            <td>{{=dado.f_troncos_fisicos.dispositivo}}</td>
+            <td>
+            {{if editor == 1:}}
+                <a href="{{=url}}?id_tronco_fisico={{=dado.f_troncos_fisicos.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+
+                <a class="link" data-tabela="f_troncos_fisicos" data-nome="{{=dado.f_troncos.tronco}}" data-value="{{=dado.f_troncos_fisicos.id}}" href="#">
+                    <i class=" icon-trash"></i></a>
+            {{pass}}
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+<br><br>
+
+
+<script src="{{=URL('static','js/jquery.js')}}"></script>
+<script>
+var links = document.querySelectorAll('.link');
+for (x in links) {
+    links[x].onclick = function() { 
+    var data_attr = this.dataset;
+    //alert(data_attr.value);
+    var id   = data_attr.value;
+    var nome = data_attr.nome;
+    var tabela= data_attr.tabela;
+    decisao = confirm("Tem certeza que deseja remover o item "+nome);
+        if(decisao){
+            location.href="{{=URL(a='admanager', c='initial', f='delete')}}?id_tab="+id+"&tabela="+tabela+";"
+        }
+    return false;
+    }
+}
+/*JQUERY
+$( document ).ready(function() {
+
+$('.link').on('click', function(e) {
+    e.preventDefault();
+    alert($(this).data('value'));
+});
+
+});*/
+</script>
+
+
+{{end}}

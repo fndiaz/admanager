@@ -11,8 +11,8 @@
     menu    =   db(db.f_menu).select(orderby=db.f_menu.ordem)
     for dado in menu:
     if dado.submenu == False:
-    print dado
-    print id_usuario
+    #print dado
+    #print id_usuario
     if auth.has_membership(dado.nome, id_usuario):
         check_menup = "checked"
     else:
@@ -24,7 +24,14 @@
 <tr>         
 <td width="40%", style="border:1px solid #ADC2CC"><b>{{=dado.nome}}</b></td>
 <td width="60%", style="border:1px solid #ADC2CC">
-<input class="form-control" id="{{=dado.nome}}" name="{{=dado.nome}}" type="checkbox" value="on" {{=check_menup}}>
+<!--<input class="form-control" id="{{=dado.nome}}" name="{{=dado.nome}}" type="checkbox" value="on" {{=check_menup}}>-->
+
+<label class="switch switch-success">
+<input type="checkbox" class="switch-input" id="{{=dado.nome}}" name="{{=dado.nome}}" value="on" {{=check_menup}}>
+<span class="switch-label" data-on="On" data-off="Off"></span>
+<span class="switch-handle"></span>
+</label>
+
 </td>
 </tr>
 </tbody>
@@ -42,7 +49,14 @@ pass}}
 <tr>         
 <td width="40%", style="border:1px solid #ADC2CC"><b>{{=dado.nome}}</b></td>
 <td width="60%", style="border:1px solid #ADC2CC">
-<input class="form-control" id="{{=dado.nome}}" name="{{=dado.nome}}" type="checkbox" value="on" {{=check_menup}}>
+<!--<input class="form-control" id="{{=dado.nome}}" name="{{=dado.nome}}" type="checkbox" value="on" {{=check_menup}}>-->
+
+<label class="switch switch-success">
+<input type="checkbox" class="switch-input" id="{{=dado.nome}}" name="{{=dado.nome}}" value="on" {{=check_menup}}>
+<span class="switch-label" data-on="On" data-off="Off"></span>
+<span class="switch-handle"></span>
+</label>
+
 </td>
 </tr>
 {{pass
@@ -50,6 +64,7 @@ pass}}
 query = (dado.id == db.f_submenu.menu_ref)
 submenu = db(query).select(orderby=db.f_submenu.ordem)
 for sub in submenu:
+#print sub.nome
 if auth.has_membership(sub.nome, id_usuario):
     check_sub = "checked"
 else:
@@ -58,13 +73,41 @@ pass}}
 <tr>         
 <td style="border:1px solid #ADC2CC">{{=sub.nome}}</td>
 <td style="border:1px solid #ADC2CC">
-<input class="form-control" id="{{=sub.nome}}" name="{{=sub.nome}}" type="checkbox" value="on" {{=check_sub}}>
+<!--<input class="form-control" id="{{=sub.nome}}" name="{{=sub.nome}}" type="checkbox" value="on" {{=check_sub}}>-->
+
+<label class="switch switch-success">
+<input type="checkbox" class="switch-input" id="{{=sub.nome}}" name="{{=sub.nome}}" value="on" {{=check_sub}}>
+<span class="switch-label" data-on="On" data-off="Off"></span>
+<span class="switch-handle"></span>
+</label>
+
 </td>
 </tr>  
 {{pass}} 
 </tbody>
 </table><br>
 {{pass}}
+
+<!--Permissão escrita -->
+<table style="clear: both" class="table table-bordered table-striped" id="user">
+
+<tbody> 
+<tr>         
+<td width="40%", style="border:1px solid #ADC2CC"><b>Permissão de Escrita</b></td>
+<td width="60%", style="border:1px solid #ADC2CC">
+<!--<input class="form-control" id="{{=dado.nome}}" name="{{=dado.nome}}" type="checkbox" value="on" {{=check_menup}}>-->
+
+<label class="switch switch-success">
+<input type="checkbox" class="switch-input" id="gerenciador" name="gerenciador" value="on" {{=check_ger}}>
+<span class="switch-label" data-on="On" data-off="Off"></span>
+<span class="switch-handle"></span>
+</label>
+
+</td>
+</tr>
+</tbody>
+</table><br>
+
 
 <input value="Enviar" type="submit"  class="btn btn-primary">
 </form>

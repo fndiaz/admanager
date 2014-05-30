@@ -1,0 +1,79 @@
+{{extend 'layout.html'}}
+
+{{block center}}
+<br>
+<div class="direita">
+    {{if editor == 1:}}
+   <button type="button" class="btn btn-primary" onclick=location.href="{{=url}}" >Adicionar</button>
+   {{pass}}
+</div>
+<table class="tabela-forip">
+    <thead>
+        <tr>
+            <th>Tronco</th>
+            <th>Dispositivo</th>
+            <th>Cham. Simultaneas</th>
+            <th>Qtd Minutos</th>
+            <th>Transbordo</th>
+            <th>Csp</th>
+            <th>ddd</th>
+            <th>Prefixo</th>
+            <th>Chave</th>
+            <th>Habilitado</th>
+            <th>Ciclo conta</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {{for dado in troncos:}}
+        <tr>
+            <td>{{=dado.tronco}}</td>
+            <td>{{=dado.dispositivo}}</td>
+            <td>{{=dado.chamadas_simultaneas}}</td>
+            <td>{{=dado.qtde_max_minutos}}</td>
+            <td>{{=dado.transbordo}}</td>
+            <td>{{=dado.csp}}</td>
+            <td>{{=dado.ddd}}</td>
+            <td>{{=dado.prefixo}}</td>
+            <td>{{=dado.chave}}</td>
+            {{if dado.habilitado is True:}}
+            <td><input checked="checked" disabled="disabled" type="checkbox"></td>
+            {{else:}}
+            <td><input disabled="disabled" type="checkbox"></td>
+            {{pass}}
+            <td>{{=dado.ciclo_conta}}</td>
+            <td>
+                {{if editor == True:}}
+                <a href="{{=url}}?id_tronco={{=dado.id}}">
+                    <i class=" icon-edit"></i></a> &nbsp;&nbsp;
+
+                <a class="link" data-tabela="f_troncos" data-nome="{{=dado.tronco}}" data-value="{{=dado.id}}" href="#">
+                    <i class=" icon-trash"></i></a>
+                {{pass}}
+            </td>
+        </tr>
+    {{pass}}
+    </tbody>
+</table>
+<br><br>
+
+
+<script>
+var links = document.querySelectorAll('.link');
+for (x in links) {
+    links[x].onclick = function() { 
+    var data_attr = this.dataset;
+    //alert(data_attr.value);
+    var id   = data_attr.value;
+    var nome = data_attr.nome;
+    var tabela= data_attr.tabela;
+    decisao = confirm("Tem certeza que deseja remover o item "+nome);
+        if(decisao){
+            location.href="{{=URL(a='admanager', c='initial', f='delete')}}?id_tab="+id+"&tabela="+tabela+";"
+        }
+    return false;
+    }
+}
+</script>
+
+{{end}}
